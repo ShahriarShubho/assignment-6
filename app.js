@@ -128,10 +128,10 @@ searchBtn.addEventListener('click', function () {
   if(search.value == ""){
     swal("Opppsss!", "Please type a valid name first", "info");
   }else
-  getImages(search.value)
+  getImages(search.value);
   sliders.length = 0;
-  const durationValue = document.getElementById('duration').value = ""
-  const imageCountText = document.getElementById('image-count').innerText = 0
+  const durationValue = document.getElementById('duration').value = "";
+  const imageCountText = document.getElementById('image-count').innerText = 0;
   
 })
 
@@ -144,10 +144,10 @@ const search = document.getElementById('search');
 search.addEventListener("keypress", function(event) {
     if (event.key === "Enter")
     searchBtn.click();
-}); 
+}) 
 
 // this code for spinner
-const toggleSpinner = (show) =>{
+const toggleSpinner = () =>{
   const spinner = document.getElementById('spinner');
  spinner.classList.toggle('d-md-none')
 
