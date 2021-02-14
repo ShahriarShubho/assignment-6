@@ -31,21 +31,30 @@ const getImages = (query) => {
   fetch(`https://pixabay.com/api/?key=${KEY}=${query}&image_type=photo&pretty=true`)
     .then(response => response.json())
     .then(data => showImages(data.hits))
-    .catch(err => alert("something wrong please try again letter"))
+    .catch(err => swal("Opppsss!", "something missing please try again letter", "info"))
 }
 
 let slideIndex = 0;
 const selectItem = (event, img) => {
   let element = event.target;
   element.classList.toggle('added');
+
+  //This code is selected image count code
+  let imageCount = 0;
+  const imageCountText = document.getElementById('image-count');
  
   if (element.classList.contains('added')) {
     sliders.push(img);
+    imageCount = sliders.length;
+    imageCountText.innerText = imageCount;
+
   }else{
     let item = sliders.indexOf(img);
-    sliders.splice(item, 1)
+    sliders.splice(item, 1);
+    imageCount = sliders.length;
+    imageCountText.innerText = imageCount;
   } 
-  }
+}
 
 let timer
 const createSlider = () => {
@@ -84,7 +93,6 @@ const createSlider = () => {
       slideIndex++;
       changeSlide(slideIndex);
     }, duration);
-
 }
 
 // change slider index 
@@ -122,6 +130,9 @@ searchBtn.addEventListener('click', function () {
   }else
   getImages(search.value)
   sliders.length = 0;
+  const durationValue = document.getElementById('duration').value = ""
+  const imageCountText = document.getElementById('image-count').innerText = 0
+  
 })
 
 sliderBtn.addEventListener('click', function () {
