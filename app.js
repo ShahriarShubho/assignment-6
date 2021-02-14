@@ -139,14 +139,12 @@ sliderBtn.addEventListener('click', function () {
   createSlider()
 })
 
-
 //This code for working Enter press 
 const search = document.getElementById('search');
 search.addEventListener("keypress", function(event) {
     if (event.key === "Enter")
     searchBtn.click();
 }); 
-
 
 // this code for spinner
 const toggleSpinner = (show) =>{
